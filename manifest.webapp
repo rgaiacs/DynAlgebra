@@ -1,0 +1,26 @@
+{
+    "name": "DynAlgebra",
+    "description": "Dynamic algebra is making calculations with the mouse, is direct manipulation on formulas, preserving the signification.",
+    "type": "web",
+    "launch_path": "/index.html",
+    "icons": {
+        "32": "/icons/dynalgebra-32.png",
+        "60": "/icons/dynalgebra-60.png",
+        "90": "/icons/dynalgebra-90.png",
+        "120": "/icons/dynalgebra-120.png",
+        "128": "/icons/dynalgebra-128.png",
+        "256": "/icons/dynalgebra-256.png"
+    },
+    "developer": {
+        "name": "Raniere Gaia Costa da Silva",
+        "url": "https://r-gaia-cs.github.com/mathml.js"
+    },
+    "locales": {
+        "en-US": {
+            "name": "TeXZilla",
+            "description": "(La)TeX to MathML"
+        }
+    },
+    "default_locale": "en",
+    "permissions": {}
+}
