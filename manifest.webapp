@@ -1,4 +1,5 @@
 {
+    "version": "1.0.1",
     "name": "DynAlgebra",
     "description": "Dynamic algebra is making calculations with the mouse, is direct manipulation on formulas, preserving the signification.",
     "type": "web",
@@ -17,8 +18,8 @@
     },
     "locales": {
         "en-US": {
-            "name": "TeXZilla",
-            "description": "(La)TeX to MathML"
+            "name": "DynAlgebra",
+            "description": "Dynamic algebra is making calculations with the mouse, is direct manipulation on formulas, preserving the signification."
         }
     },
     "default_locale": "en",
