@@ -52,7 +52,7 @@ package: build
 cleanall:
 	rm -f ${ICONS}
 	rm -f dynalgebra.zip
-	#
+
 # Auxiliar rules
 
 index.html: template.sed template.html
@@ -72,4 +72,4 @@ icons/%.png: icons/math-cheat-sheet.svg
 	convert -background none $< -resize $(subst icons/math-cheat-sheet-,,$(basename $@)) $@
 
 icons/%.png: icons/dynalgebra.svg
-	convert -background none $< -resize $(subst icons/dynalgebra-,,$(basename $@)) $@
+	convert -density 512 -background none $< -resize $(subst icons/dynalgebra-,,$(basename $@)) $@
