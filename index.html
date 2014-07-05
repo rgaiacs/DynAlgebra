@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>DynAlgebra</title>
+    <!-- Building Blocks -->
+    <link rel="stylesheet" type="text/css" href="building-blocks/buttons.css" />
+    <link rel="stylesheet" type="text/css" href="building-blocks/headers.css" />
+    <link rel="stylesheet" type="text/css" href="building-blocks/input_areas.css" />
+    <link rel="stylesheet" type="text/css" href="building-blocks/icons/settings_icons.css" />
+
+    <!-- Transitions -->
+    <link rel="stylesheet" href="building-blocks/transitions.css">
+
+    <!-- Util CSS: some extra tricks -->
+    <link rel="stylesheet" href="building-blocks/util.css">
+
+    <!-- App CSS -->
+    <link rel="stylesheet" type="text/css" href="css/app.css" />
+
+    <!-- jQuery -->
+    <script type='text/javascript' src="js/jquery-2.1.1.min.js"></script>
+
+    <!-- MathMLJS -->
+    <script type='text/javascript' src="js/mathml.js"></script>
+
+    <!-- TeXZilla -->
+    <script src="js/TeXZilla.js"></script>
+
+    <!-- App Javascript -->
+    <script src="js/app.js"></script>
+</head>
+
+<body role="application" id="list-view">
+    <section role="region" id="main">
+        <header class="fixed">
+            <a id="btn-help"><span class="icon settings-icon help">help</span></a>
+            <h1 style='float:left;'>DynAlgebra</h1>
+            <menu type="toolbar">
+                <a id="btn-add"><span class="icon icon-add">add</span></a>
+            </menu>
+        </header>
+        <article class="scrollable header">
+            <div id='notebook'>
+            </div>
+        </article>
+    </section>
+    <section role="region" id="add">
+        <header class="fixed">
+            <button id='btn-add-close'><span class="icon icon-close">close</span>
+            </button>
+            <menu type="toolbar">
+                <button id='btn-add-done'>Done</button>
+            </menu>
+            <h1 style='float:left;'>New Equation</h1>
+        </header>
+        <article class="scrollable header">
+            <div id='tex-preview' style="margin:5px;">
+            </div>
+            <textarea id='tex-input'></textarea>
+        </article>
+    </section>
+    <section role="region" id="help">
+        <header class="fixed">
+            <button id='btn-help-back'><span class="icon icon-back">back</span>
+            </button>
+            <h1 style='float:left;'>Help</h1>
+        </header>
+        <article class="scrollable header">
+            <p>This is a demo of Dynamic Algebra i.e. "doing algebraic calculations on a computer by direct manipulation".</p>
+            <p>You can click in some operator to compute it:</p>
+            <!-- id="help-click" -->
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>+</mo><mn>1</mn></mrow><annotation encoding="TeX">1 + 1</annotation></semantics></math>
+            <p>You can click in some variables to replace it:</p>
+            <!-- id="help-replace" -->
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>+</mo><mi>x</mi></mrow><annotation encoding="TeX">x + x</annotation></semantics></math>
+            <p>Some more examples:</p>
+            <!-- id="help-demos" -->
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>×</mo><mi>x</mi></mrow><annotation encoding="TeX">x \times x</annotation></semantics></math>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msqrt><mn>2</mn></msqrt><annotation encoding="TeX">\sqrt{2}</annotation></semantics></math>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mfrac><mrow><mo>-</mo><mi>b</mi><mo>+</mo><msqrt><mrow><msup><mi>b</mi><mn>2</mn></msup><mo>-</mo><mn>4</mn><mo>×</mo><mi>a</mi><mo>×</mo><mi>c</mi></mrow></msqrt></mrow><mrow><mn>2</mn><mo>×</mo><mi>a</mi></mrow></mfrac><annotation encoding="TeX">\frac{-b+\sqrt{b^2 - 4 \times a \times c}}{2 \times a}</annotation></semantics></math>
+        </article>
+    </section>
+    <script src="js/setup.js"></script>
+</body>
+
+</html>
