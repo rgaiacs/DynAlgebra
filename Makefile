@@ -1,11 +1,15 @@
-## Variables
+## ############################### Variables ################################
 
-## - COMMONJS     : implementation of CommonJS to use: slimerjs, phantomjs
+## COMMONJS     : implementation of CommonJS to use: slimerjs, phantomjs
 ##                  or nodejs.
 COMMONJS = slimerjs
-## - TEXZILLAPATH : path to TeXZilla.js
-TEXZILLAPATH = ./TeXZilla
-#
+## JQUERY : path to jQuery.js
+JQUERY = js/jquery-2.1.1.min.js
+## TEXZILLA : path to TeXZilla.js
+TEXZILLA = js/TeXZilla.js
+## MATHMLJS : path to mathml.js
+MATHMLJS = js/mathml.js
+
 # Command Options
 XARGSOPTIONS = --no-run-if-empty
 
@@ -30,27 +34,28 @@ PACKAGELIST = manifest.webapp \
 
 # main rules
 
-## Commands
-## - help         : print this message
+## 
+## ################################ Commands ################################
+## help         : print this message
 help:
 	@grep -e '^##' Makefile | sed 's/## //'
 
-## - build        : build some files need for this webapp
-build: index.html ${ICONS}
+## build        : build some files need for this webapp
+build: index.html ${ICONS} ${JQUERY} ${TEXFILES} ${MATHMLJS}
 
-## - beaufify     : beautify files
+## beaufify     : beautify files
 beautify:
 	html-beautify -r template.html
 	css-beautify -r css/app.css
 	js-beautify -r manifest.webapp
 
-## - package      : package the webapp
+## package      : package the webapp
 package: build
 	zip -r dynalgebra.zip ${PACKAGELIST}
 
-## - cleanall     : remove the files built previously
+## cleanall     : remove the files built previously
 cleanall:
-	rm -f ${ICONS}
+	rm -f ${ICONS} ${TEXFILES} ${MATHMLJS}
 	rm -f dynalgebra.zip
 
 # Auxiliar rules
@@ -58,18 +63,27 @@ cleanall:
 index.html: template.sed template.html
 	sed -f $^ > $@
 
-template.sed: $(DEMOS)
+template.sed: ${DEMOS}
 	rm -f $@ && for i in $(DEMOS); \
 	do \
 		echo -e /\id=\"$${i/.html/}\"/ {\\nr $${i}\\n} >> $@; \
 	done;
 
-%.html: %.tex
-	xargs $(XARGSOPTIONS) -a $< -L1 \
-	    $(COMMONJS) $(TEXZILLAPATH)/TeXZilla.js parser > $@
+%.html: %.tex ${TEXZILLA}
+	xargs ${XARGSOPTIONS} -a $< -L1 \
+	    ${COMMONJS} ${TEXZILLA} parser > $@
 
-icons/%.png: icons/math-cheat-sheet.svg
-	convert -background none $< -resize $(subst icons/math-cheat-sheet-,,$(basename $@)) $@
+${JQUERY}:
+	wget http://code.jquery.com/jquery-2.1.1.min.js \
+	    -O ${JQUERY}
+
+${TEXZILLA}:
+	wget https://raw.githubusercontent.com/fred-wang/TeXZilla/TeXZilla-0.9.7/TeXZilla.js \
+	    -O ${TEXZILLA}
+
+${MATHMLJS}:
+	wget https://raw.githubusercontent.com/r-gaia-cs/mathml.js/gh-pages/mathml.js \
+	    -O ${MATHMLJS}
 
 icons/%.png: icons/dynalgebra.svg
 	convert -density 512 -background none $< -resize $(subst icons/dynalgebra-,,$(basename $@)) $@
