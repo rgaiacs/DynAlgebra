@@ -2,3 +2,6 @@
 *.png
 *.sed
 *.zip
+js/TeXZilla.js
+js/jquery-2.1.1.min.js
+js/mathml.js
